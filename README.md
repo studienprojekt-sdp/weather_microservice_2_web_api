@@ -6,10 +6,10 @@ using OpenWeatherMap API: https://openweathermap.org/
 
 run the container with published ports
 
-'docker run -dit --publish 3000:3000 --name <CONTAINER_NAME> <IMAGE_NAME>'
+`docker run -dit --publish 3000:3000 --name <CONTAINER_NAME> <IMAGE_NAME>`
 
 then enter in your browser's address bar
 
-'http://localhost:3000/api/city/w=<CITY>'
+`http://localhost:3000/api/city/w=<CITY>`
 
 
