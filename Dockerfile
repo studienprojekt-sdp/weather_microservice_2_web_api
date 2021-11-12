@@ -13,4 +13,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+EXPOSE 4001
+
 ENTRYPOINT [ "node", "app" ]

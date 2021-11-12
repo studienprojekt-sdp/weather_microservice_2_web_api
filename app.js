@@ -1,7 +1,7 @@
-const axios = require('axios');
-const express = require("express");
-const app = express();
+import express from "express";
+import axios from "axios";
 
+const app = express();
 const port = 4001;
 
 app.listen(port, () => {
@@ -31,8 +31,15 @@ app.get("/api/weather/", function(req, res) {
             (${temperatureF.toFixed(1)} ºF), with ${humidity}% humidity, \
             conditions: ${response.data.weather[0].description} `.replace(/\s+/g, " ");
 
-        res.send(weatherDisplay)
+        res.status(200).send(weatherDisplay)
       })
-      .catch(error => console.log("Error", error));
+      .catch(error => {
+        if (error.response) {
+          res.status(404).send("Error occurred! Reason: " + error.response.data)
+        }
+        else {
+          res.status(404).send("Unknown error occurred!")
+        }
+      });
 
     });
