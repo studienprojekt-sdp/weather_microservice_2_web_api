@@ -1,5 +1,6 @@
-import express from "express";
-import axios from "axios";
+const express = require("express");
+const axios = require("axios");
+const conversionFunctions = require("./utils/ConversionUtils.js");
 
 const app = express();
 const port = 4001;
@@ -22,8 +23,8 @@ app.get("/api/weather/", function(req, res) {
         const countryName  = response.data.sys.country;
 
         // Handle Temperature conversions from Kelvins
-        const temperatureF = (temperatureK * 9) / 5 - 459.67;
-        const temperatureC = temperatureK - 273.15;
+        const temperatureF = conversionFunctions.convertKelvinToFahrenheit(temperatureK);
+        const temperatureC = conversionFunctions.convertKelvinToCelsius(temperatureK);
 
         const weatherDisplay = `Right now, in \
             ${cityName}, ${countryName} the current temperature is \

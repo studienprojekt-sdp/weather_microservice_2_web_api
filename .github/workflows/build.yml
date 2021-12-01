@@ -2,6 +2,7 @@ name: Build Image
 
 on:   
   pull_request:
+  push:
 
 env:
   IMAGE_NAME: weatherservice_temp
@@ -16,6 +17,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install modules
+        run: yarn
+      
+      - name: Run unittests with Jest
+        run: yarn test
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
