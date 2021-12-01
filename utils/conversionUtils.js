@@ -1,5 +1,5 @@
 exports.convertKelvinToCelsius = function (temperature) {
-    return temperature - 2843.15;
+    return temperature - 273.15;
   };
 
 exports.convertKelvinToFahrenheit = function (temperature) {
